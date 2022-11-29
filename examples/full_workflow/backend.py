@@ -10,7 +10,7 @@ from mlq.queue import MLQ
 app = Flask(__name__)
 
 # Create MLQ: namespace, redis host, redis port, redis db
-mlq = MLQ('example_app', 'localhost', 6379, 'rRSnTQE9q5UU', 'default' 0)
+mlq = MLQ('example_app', 'localhost', 6379, 'rRSnTQE9q5UU', 'default', 0)
 
 CALLBACK_URL = 'http://localhost:3000/callback'
 
