@@ -18,7 +18,7 @@ import cloudpickle
 
 class MLQ():
     """Create an MLQ object"""
-    def __init__(self, q_name, redis_host, redis_port, redis_pw, redis_user, redis_db):
+    def __init__(self, q_name, redis_host, redis_port, redis_pw, redis_db):
         self.q_name = q_name
         self.processing_q = self.q_name + '_processing'
         self.job_status_stem = self.q_name + '_progress_'
@@ -27,7 +27,7 @@ class MLQ():
         # msgs have a 64 bit id starting at 0
         self.id_key = self.q_name + '_max_id'
         self.id = str(uuid())
-        self._redis = redis.StrictRedis(host=redis_host, port=redis_port, db=redis_db, password=redis_pw, username=redis_user, decode_responses=False)
+        self._redis = redis.StrictRedis(host=redis_host, port=redis_port, db=redis_db, password=redis_pw, decode_responses=False)
         logging.info('Connected to Redis at {}:{}'.format(redis_host, redis_port))
         self.pubsub = self._redis.pubsub(ignore_subscribe_messages=True)
         self.funcs_to_execute = []

@@ -46,8 +46,7 @@ def set_args():
                         help='Port for server to listen at.')
     parser.add_argument('--redis_pw', default='passw0rd',
                         help='Redis Password')
-    parser.add_argument('--redis_user', default='default',
-                        help='User')
+ 
     return parser
 
 def my_producer_func(q):
@@ -129,7 +128,7 @@ def server(mlq, address, port, start_serving=True):
         return flask_app
 
 async def main(args):
-    mlq = MLQ(args.namespace, args.redis_host, int(args.redis_port), args.redis_pw, args.redis_user, 0)
+    mlq = MLQ(args.namespace, args.redis_host, int(args.redis_port), args.redis_pw, 0)
     command = args.cmd
     if command == 'clear_all':
         print('Clearing everything in namespace {}'.format(args.namespace))
