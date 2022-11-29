@@ -18,7 +18,7 @@ def http():
 
 @pytest.fixture
 def mlq():
-    queue = MLQ('test_mlq_ns', 'localhost', 6379, 0)
+    queue = MLQ('test_mlq_ns', 'ec2-3-86-25-133.compute-1.amazonaws.com', 6379, 'rRSnTQE9q5UU', 0)
     return queue
 
 is_server_running = False
@@ -58,7 +58,7 @@ def test_q_set():
 
 def test_clear_all():
     args = set_args()
-    args = args.parse_args(['clear_all', '--redis_host', 'localhost', '--redis_port', '6379', '--namespace', 'test_mlq_ns'])
+    args = args.parse_args(['clear_all', '--redis_host', 'ec2-3-86-25-133.compute-1.amazonaws.com', '--redis_port', '6379', '--namespace', 'test_mlq_ns', '--redis_pw', 'rRSnTQE9q5UU'])
     q = asyncio.run(main(args))
     keys = q._redis.keys('test_mlq_ns*')
     assert isinstance(keys, list)
