@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='mlq',
-    version='0.2.3',
+    version='0.2.4',
     packages=['mlq', 'controller'],
     long_description=open('README.txt').read(),
     install_requires=open('requirements.txt').read(),
